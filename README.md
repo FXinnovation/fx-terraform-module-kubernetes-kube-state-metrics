@@ -31,6 +31,8 @@ Terraform module that will deploy kube-state-metrics on kubernetes.
 | image\_version | Tag of the docker image to use. | `string` | `"v1.6.0"` | no |
 | labels | Additionnal labels that will be merged on all resources. | `map` | `{}` | no |
 | namespace | Namespace in which the module will be deployed. | `string` | `"kube-system"` | no |
+| prometheus\_alert\_groups\_rules\_annotations | Map of strings that will be merge on all prometheus alert groups rules annotations. | `map` | `{}` | no |
+| prometheus\_alert\_groups\_rules\_labels | Map of strings that will be merge on all prometheus alert groups rules labels. | `map` | `{}` | no |
 | rbac\_enabled | Whether or not to enabled rbac on the module. | `bool` | `true` | no |
 | replicas | Number of replicas to deploy. | `number` | `1` | no |
 | service\_account\_annotations | Additionnal annotations that will be merged for the service\_account. | `map` | `{}` | no |
@@ -48,7 +50,7 @@ Terraform module that will deploy kube-state-metrics on kubernetes.
 | cluster\_role\_binding\_name | Name of the cluster\_role\_binding created by the module. |
 | cluster\_role\_name | Name of the cluster\_role created by the module. |
 | deployment\_name | Name of the deployment created by the module. |
-| prometheus\_alert\_groups\_rules | List of ovjects representing prometheus alert groups |
+| prometheus\_alert\_groups | List of ovjects representing prometheus alert groups |
 | service\_account\_name | Name of the service\_account created by the module. |
 | service\_name | Name of the service created by the module. |
 | service\_port | Port to be used to access the service. |

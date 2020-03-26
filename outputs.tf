@@ -33,7 +33,7 @@ output "cluster_role_binding_name" {
   value       = element(concat(kubernetes_cluster_role_binding.this.*.metadata.0.name, [""]), 0)
 }
 
-output "prometheus_alert_groups_rules" {
+output "prometheus_alert_groups" {
   description = "List of ovjects representing prometheus alert groups"
-  value       = var.enabled ? local.prometheus_alert_groups_rules : []
+  value       = var.enabled ? local.prometheus_alert_groups : []
 }

@@ -13,7 +13,7 @@ locals {
   port              = 8080
   service_port      = 80
   service_port_name = "http"
-  prometheus_alert_rules_groups = [
+  prometheus_alert_groups = [
     {
       "name" = "kube-state-metrics"
       "rules" = [
