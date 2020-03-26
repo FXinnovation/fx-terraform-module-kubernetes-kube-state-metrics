@@ -32,3 +32,8 @@ output "cluster_role_binding_name" {
   description = "Name of the cluster_role_binding created by the module."
   value       = element(concat(kubernetes_cluster_role_binding.this.*.metadata.0.name, [""]), 0)
 }
+
+output "prometheus_alert_groups_rules" {
+  description = "List of ovjects representing prometheus alert groups"
+  value       = var.enabled ? local.prometheus_alert_groups_rules : []
+}

@@ -48,6 +48,7 @@ Terraform module that will deploy kube-state-metrics on kubernetes.
 | cluster\_role\_binding\_name | Name of the cluster\_role\_binding created by the module. |
 | cluster\_role\_name | Name of the cluster\_role created by the module. |
 | deployment\_name | Name of the deployment created by the module. |
+| prometheus\_alert\_groups\_rules | List of ovjects representing prometheus alert groups |
 | service\_account\_name | Name of the service\_account created by the module. |
 | service\_name | Name of the service created by the module. |
 | service\_port | Port to be used to access the service. |
