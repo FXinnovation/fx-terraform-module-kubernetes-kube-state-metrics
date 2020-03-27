@@ -171,7 +171,7 @@ locals {
         },
         {
           "alert" = "kube-state-metrics - daemonset availability critical"
-          "expr"  = "kube_daemonset_status_current_number_ready / kube_daemonset_status_desired_number_scheduled) * 100  < 100"
+          "expr"  = "(kube_daemonset_status_current_number_ready / kube_daemonset_status_desired_number_scheduled) * 100  < 100"
           "for"   = "5m"
           "labels" = merge(
             {
@@ -197,7 +197,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -216,7 +216,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -235,7 +235,7 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -254,7 +254,7 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -273,7 +273,7 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -292,7 +292,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -311,7 +311,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -330,7 +330,7 @@ locals {
               "severity" = "cirtical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -349,7 +349,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -368,7 +368,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -387,7 +387,7 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -406,7 +406,7 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -425,7 +425,7 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -444,7 +444,7 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -463,7 +463,7 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -482,7 +482,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -501,7 +501,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -520,7 +520,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
@@ -539,7 +539,7 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_group_rule_labels
+            var.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {

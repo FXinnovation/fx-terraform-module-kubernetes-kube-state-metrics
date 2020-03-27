@@ -1,7 +1,8 @@
 
-0.2.0 / 2020-03-26
+0.2.0 / 2020-03-27
 ==================
 
+  * fix: Several typo's in alert groups
   * tech: Use KinD for testing
   * feat: Add prometheus alerts as outputs
 
