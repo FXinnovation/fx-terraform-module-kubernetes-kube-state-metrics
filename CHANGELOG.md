@@ -1,7 +1,8 @@
 
-0.2.0 / 2020-03-27
+0.2.0 / 2020-03-30
 ==================
 
+  * tech: Set example to use KinD
   * fix: Several typo's in alert groups
   * tech: Use KinD for testing
   * feat: Add prometheus alerts as outputs
