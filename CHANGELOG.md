@@ -2,6 +2,7 @@
 0.2.0 / 2020-03-30
 ==================
 
+  * fix: Typo in "critical" on one of the alerts
   * tech: Set example to use KinD
   * fix: Several typo's in alert groups
   * tech: Use KinD for testing

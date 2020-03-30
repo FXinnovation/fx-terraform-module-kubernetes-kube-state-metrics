@@ -327,7 +327,7 @@ locals {
           "for"   = "5m"
           "labels" = merge(
             {
-              "severity" = "cirtical"
+              "severity" = "critical"
               "urgency"  = "2"
             },
             var.prometheus_alert_groups_rules_labels
