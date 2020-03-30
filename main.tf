@@ -201,8 +201,8 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "kube-state-metrics - Container got OOM Killed for {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }}"
-              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} got OOM Killed on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
+              "summary"     = "kube-state-metrics - Container got {{ $labels.reason }} for {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }}"
+              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} got {{ $labels.reason }} on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
             var.prometheus_alert_groups_rules_annotations
           )
@@ -220,8 +220,8 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "kube-state-metrics - Container teminated with Container Cannot Run reason for {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }}"
-              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} teminated with Container Cannot Run on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
+              "summary"     = "kube-state-metrics - Container teminated with {{ $labels.reason }} reason for {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }}"
+              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} teminated with {{ $labels.reason }} Run on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
             var.prometheus_alert_groups_rules_annotations
           )
@@ -239,8 +239,8 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with Crashloop Back Off reason."
-              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with Crashloop Back Off reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
+              "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with {{ $labels.reason }} reason."
+              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with {{ $labels.reason }} reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
             var.prometheus_alert_groups_rules_annotations
           )
@@ -258,8 +258,8 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with Config Creation Error reason."
-              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with Config Creation Error reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
+              "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with {{ $labels.reason }} reason."
+              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with {{ $labels.reason }} reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
             var.prometheus_alert_groups_rules_annotations
           )
@@ -277,8 +277,8 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with Image Pull Back Off reason."
-              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with Image Pull Back Off reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
+              "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with {{ $labels.reason }} reason."
+              "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with {{ $labels.reason }} reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
             var.prometheus_alert_groups_rules_annotations
           )
