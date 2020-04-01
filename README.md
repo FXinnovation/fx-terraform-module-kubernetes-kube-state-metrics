@@ -3,6 +3,14 @@
 Terraform module that will deploy kube-state-metrics on kubernetes.
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+| kubernetes | >= 1.10.0 |
+| random | >= 2.0.0 |
+
 ## Providers
 
 | Name | Version |
@@ -13,7 +21,7 @@ Terraform module that will deploy kube-state-metrics on kubernetes.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
+|------|-------------|------|---------|:--------:|
 | annotations | Additionnal annotations that will be merged on all resources. | `map` | `{}` | no |
 | cluster\_role\_annotations | Additionnal annotations that will be merged for the cluster\_role. | `map` | `{}` | no |
 | cluster\_role\_binding\_annotations | Additionnal annotations that will be merged for the cluster\_role\_binding. | `map` | `{}` | no |
@@ -24,7 +32,7 @@ Terraform module that will deploy kube-state-metrics on kubernetes.
 | deployment\_annotations | Additionnal annotations that will be merged on the deployment. | `map` | `{}` | no |
 | deployment\_labels | Additionnal labels that will be merged on the deployment. | `map` | `{}` | no |
 | deployment\_name | Name of the deployment that will be create. | `string` | `"kube-state-metrics"` | no |
-| deployment\_service\_account\_name | Only if `rbac_enabled` is false, name of the service account to be used by the container. | `string` | n/a | yes |
+| deployment\_service\_account\_name | Only if `rbac_enabled` is false, name of the service account to be used by the container. | `string` | `null` | no |
 | enabled | Whether or not to enable this module. | `bool` | `true` | no |
 | image\_name | Name of the docker image to use. | `string` | `"quay.io/coreos/kube-state-metrics"` | no |
 | image\_pull\_policy | Image pull policy on the main container. | `string` | `"IfNotPresent"` | no |

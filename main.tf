@@ -335,7 +335,7 @@ locals {
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Persistent Volume {{ $labels.namespace }}-{{ $labels.persistentvolume }} has a phase of Failed."
-              "description" = "kube-state-metrics:\nPersistent Volume {{ $labels.persistentvolume }} has been in phase Failed for 15m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
+              "description" = "kube-state-metrics:\nPersistent Volume {{ $labels.persistentvolume }} has been in phase Failed for 5m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
             var.prometheus_alert_groups_rules_annotations
           )
@@ -437,7 +437,7 @@ locals {
         },
         {
           "alert" = "kube-state-metrics - node condition unkown"
-          "expr"  = "kube_node_status_condition{status=\"unknown\"} > 1"
+          "expr"  = "kube_node_status_condition{status=\"unknown\"} > 0"
           "for"   = "5m"
           "labels" = merge(
             {
@@ -455,8 +455,8 @@ locals {
           )
         },
         {
-          "alert" = "kube-state-metrics - node condition false"
-          "expr"  = "kube_node_status_condition{status=\"false\"} > 1"
+          "alert" = "kube-state-metrics - node condition true"
+          "expr"  = "kube_node_status_condition{status=\"true\"} > 0"
           "for"   = "5m"
           "labels" = merge(
             {
@@ -467,8 +467,8 @@ locals {
           )
           "annotations" = merge(
             {
-              "summary"     = "kube-state-metrics - Condition {{ $labels.condition }} on node {{ $labels.node }} is bad (false)."
-              "description" = "kube-state-metrics:\nCondition {{ $labels.condition }} on node {{ $labels.node }} has been bad (false) for 5m.\nLabels:\n{{ $labels }}"
+              "summary"     = "kube-state-metrics - Condition {{ $labels.condition }} on node {{ $labels.node }} is failing."
+              "description" = "kube-state-metrics:\nCondition {{ $labels.condition }} on node {{ $labels.node }} has been failing for 5m.\nLabels:\n{{ $labels }}"
             },
             var.prometheus_alert_groups_rules_annotations
           )
