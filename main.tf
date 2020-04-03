@@ -13,6 +13,16 @@ locals {
   port              = 8080
   service_port      = 80
   service_port_name = "http"
+  prometheus_alert_groups_rules_labels = merge(
+    {
+      "source" = "https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-kubernetes-kube-state-metrics"
+    },
+    var.prometheus_alert_groups_rules_labels
+  )
+  prometheus_alert_groups_rules_annotations = merge(
+    {},
+    var.prometheus_alert_groups_rules_annotations
+  )
   prometheus_alert_groups = [
     {
       "name" = "kube-state-metrics"
@@ -26,14 +36,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Deployment replica availability warning on {{ $labels.namespace }}-{{ $labels.deployment }}"
               "description" = "kube-state-metrics:\nDeployment {{ $labels.deployment }} in namespace {{ $labels.namespace }} has had less then 100% available replica's for 15min.\nValue: {{ $value }}%\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -45,14 +55,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Deployment replica availability critical on {{ $labels.namespace }}-{{ $labels.deployment }}"
               "description" = "kube-state-metrics:\nDeployment {{ $labels.deployment }} in namespace {{ $labels.namespace }} has had less then 50% available replica's for 15min.\nValue: {{ $value }}%\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -64,14 +74,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Deployment down on {{ $labels.namespace }}-{{ $labels.deployment }}"
               "description" = "kube-state-metrics:\nDeployment {{ $labels.deployment }} in namespace {{ $labels.namespace }} has had 0% available replica's for 1min.\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -83,14 +93,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Deployment down on {{ $labels.namespace }}-{{ $labels.deployment }}"
               "description" = "kube-state-metrics:\nDeployment {{ $labels.deployment }} in namespace {{ $labels.namespace }} has had 0% available replica's for 15min.\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -102,14 +112,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Statefulset replica availability warning on {{ $labels.namespace }}-{{ $labels.statefulset }}"
               "description" = "kube-state-metrics:\nStatefulset {{ $labels.statefulset }} in namespace {{ $labels.namespace }} has had less then 100% available replica's for 15min.\nValue: {{ $value }}%\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -121,14 +131,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Statefulset replica availability critical on {{ $labels.namespace }}-{{ $labels.statefulset }}"
               "description" = "kube-state-metrics:\nStatefulset {{ $labels.statefulset }} in namespace {{ $labels.namespace }} has had less then 50% available replica's for 15min.\nValue: {{ $value }}%\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -140,14 +150,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Statefulset down on {{ $labels.namespace }}-{{ $labels.statefulset }}"
               "description" = "kube-state-metrics:\nStatefulset {{ $labels.statefulset }} in namespace {{ $labels.namespace }} has had 0% available replica's for 1min.\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -159,14 +169,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Statefulset down on {{ $labels.namespace }}-{{ $labels.statefulset }}"
               "description" = "kube-state-metrics:\nStatefulset {{ $labels.statefulset }} in namespace {{ $labels.namespace }} has had 0% available replica's for 15min.\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -178,14 +188,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Daemonset Replica Availability Critical on {{ $labels.namespace }}-{{ $labels.daemonset }}"
               "description" = "kube-state-metrics:\nDaemonset {{ $labels.daemonset }} in namespace {{ $labels.namespace }} has had less then 100% available replica's for 5min.\nValue: {{ $value }}%\nLabels: {{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -197,14 +207,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Container got {{ $labels.reason }} for {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }}"
               "description" = "kube-state-metrics:\nContainer {{ $labels.container }} got {{ $labels.reason }} on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -216,14 +226,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Container teminated with {{ $labels.reason }} reason for {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }}"
               "description" = "kube-state-metrics:\nContainer {{ $labels.container }} teminated with {{ $labels.reason }} Run on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -235,14 +245,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with {{ $labels.reason }} reason."
               "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with {{ $labels.reason }} reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -254,14 +264,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with {{ $labels.reason }} reason."
               "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with {{ $labels.reason }} reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -273,14 +283,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Container {{ $labels.namespace }}-{{ $labels.pod }}-{{ $labels.container }} is waiting creation with {{ $labels.reason }} reason."
               "description" = "kube-state-metrics:\nContainer {{ $labels.container }} is waiting to be created with {{ $labels.reason }} reason on pod {{ $labels.pod }} in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -292,14 +302,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Pod {{ $labels.namespace }}-{{ $labels.pod }} has a phase of Failed."
               "description" = "kube-state-metrics:\nPod {{ $labels.pod }} has been in phase Failed for 15m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -311,14 +321,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Pod {{ $labels.namespace }}-{{ $labels.pod }} has a phase of Unknown."
               "description" = "kube-state-metrics:\nPod {{ $labels.pod }} has been in phase Unknown for 15m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -330,14 +340,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Persistent Volume {{ $labels.namespace }}-{{ $labels.persistentvolume }} has a phase of Failed."
               "description" = "kube-state-metrics:\nPersistent Volume {{ $labels.persistentvolume }} has been in phase Failed for 5m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -349,14 +359,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Persistent Volume {{ $labels.namespace }}-{{ $labels.persistentvolume }} has a phase of Pending."
               "description" = "kube-state-metrics:\nPersistent Volume {{ $labels.persistentvolume }} has been in phase Pending for 15m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -368,14 +378,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Persistent Volume Claim {{ $labels.namespace }}-{{ $labels.persistentvolumeclaim }} has a phase of Pending."
               "description" = "kube-state-metrics:\nPersistent Volume Claim {{ $labels.persistentvolumeclaim }} has been in phase Pending for 15m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -387,14 +397,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Persistent Volume Claim {{ $labels.namespace }}-{{ $labels.persistentvolumeclaim }} has a phase of Lost."
               "description" = "kube-state-metrics:\nPersistent Volume Claim {{ $labels.persistentvolumeclaim }} has been in phase Lost for 5m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -406,14 +416,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Endpoint Address {{ $labels.namespace }}-{{ $labels.endpoint }} is not in a Ready state."
               "description" = "kube-state-metrics:\nEndpoint Address {{ $labels.endpoint }} has not been Ready for 5m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -425,14 +435,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Service Load Balancer Ingress {{ $labels.namespace }}-{{ $labels.service }} is down."
               "description" = "kube-state-metrics:\nService Load Balancer Ingress {{ $labels.service }} has not been down for 5m in namespace {{ $labels.namespace }}\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -444,14 +454,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Condition {{ $labels.condition }} on node {{ $labels.node }} is unknown."
               "description" = "kube-state-metrics:\nCondition {{ $labels.condition }} on node {{ $labels.node }} has been unknown for 5m.\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -463,14 +473,14 @@ locals {
               "severity" = "critical"
               "urgency"  = "2"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Condition {{ $labels.condition }} on node {{ $labels.node }} is failing."
               "description" = "kube-state-metrics:\nCondition {{ $labels.condition }} on node {{ $labels.node }} has been failing for 5m.\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -482,14 +492,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Node {{ $labels.node }} on cluster {{ $labels.instance }} is under-provisionned in memory"
               "description" = "kube-state-metrics:\nNode {{ $labels.node }} on cluster {{ $labels.instance }} is under-provisionned in memory.\nDescription:\nPods on that node are allowed to use up to {{ $value }}% of the allocatable memory on the node.\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -501,14 +511,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Node {{ $labels.node }} on cluster {{ $labels.instance }} is dangerously under-provisionned in memory"
               "description" = "kube-state-metrics:\n\nNode {{ $labels.node }} on cluster {{ $labels.instance }} is dangerously under-provisionned in memory.\nDescription:\nPods on the node are requesting {{ $value }}% of the allocatable memory of the node.\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -520,14 +530,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Cluster {{ $labels.instance }} is under-provisionned in memory"
               "description" = "kube-state-metrics:\n\nCluster {{ $labels.instance }} is under-provisionned in memory.\nDescription:\nPods on the cluster are currently allowed to use up to {{ $value }}% of the allocatable memory of the cluster.\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         },
         {
@@ -539,14 +549,14 @@ locals {
               "severity" = "warning"
               "urgency"  = "3"
             },
-            var.prometheus_alert_groups_rules_labels
+            local.prometheus_alert_groups_rules_labels
           )
           "annotations" = merge(
             {
               "summary"     = "kube-state-metrics - Cluster {{ $labels.instance }} is dangerously under-provisionned in memory"
               "description" = "kube-state-metrics:\n\nCluster {{ $labels.instance }} is dangerously under-provisionned in memory.\nDescription:\nPods on the cluster are requesting {{ $value }}% of the allocatable memory of the cluster.\nLabels:\n{{ $labels }}"
             },
-            var.prometheus_alert_groups_rules_annotations
+            local.prometheus_alert_groups_rules_annotations
           )
         }
       ]

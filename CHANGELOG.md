@@ -1,7 +1,8 @@
 
-0.2.0 / 2020-04-01
+0.2.0 / 2020-04-03
 ==================
 
+  * feat: Add source label on all alerts
   * fix: Fixed several alerts and typo's
   * fix: Improve alerting messages
   * fix: Typo in "critical" on one of the alerts
