@@ -466,7 +466,26 @@ locals {
         },
         {
           "alert" = "kube-state-metrics - node condition true"
-          "expr"  = "kube_node_status_condition{status=\"true\"} > 0"
+          "expr"  = "kube_node_status_condition{condition!=\"Ready\",status=\"true\"} > 0"
+          "for"   = "5m"
+          "labels" = merge(
+            {
+              "severity" = "critical"
+              "urgency"  = "2"
+            },
+            local.prometheus_alert_groups_rules_labels
+          )
+          "annotations" = merge(
+            {
+              "summary"     = "kube-state-metrics - Condition {{ $labels.condition }} on node {{ $labels.node }} is failing."
+              "description" = "kube-state-metrics:\nCondition {{ $labels.condition }} on node {{ $labels.node }} has been failing for 5m.\nLabels:\n{{ $labels }}"
+            },
+            local.prometheus_alert_groups_rules_annotations
+          )
+        },
+        {
+          "alert" = "kube-state-metrics - node condition false"
+          "expr"  = "kube_node_status_condition{condition=\"Ready\",status=\"false\"} > 0"
           "for"   = "5m"
           "labels" = merge(
             {
