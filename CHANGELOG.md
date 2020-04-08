@@ -1,7 +1,8 @@
 
-0.2.1 / 2020-04-06
+0.2.1 / 2020-04-08
 ==================
 
+  * fix: Typo's in alerts
   * fix: Fix alerts on node conditions
 
 0.2.0 / 2020-04-03

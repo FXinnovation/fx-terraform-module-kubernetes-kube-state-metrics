@@ -105,7 +105,7 @@ locals {
         },
         {
           "alert" = "kube-state-metrics - statefulset availability warning"
-          "expr"  = "(kube_statefulset_status_replicas_ready / kube_statefulset_spec_replicas) * 100 < 100"
+          "expr"  = "(kube_statefulset_status_replicas_ready / kube_statefulset_replicas) * 100 < 100"
           "for"   = "15m"
           "labels" = merge(
             {
@@ -124,7 +124,7 @@ locals {
         },
         {
           "alert" = "kube-state-metrics - statefulset availability critical"
-          "expr"  = "(kube_statefulset_status_replicas_ready / kube_statefulset_spec_replicas) * 100 < 50"
+          "expr"  = "(kube_statefulset_status_replicas_ready / kube_statefulset_replicas) * 100 < 50"
           "for"   = "15m"
           "labels" = merge(
             {
@@ -143,7 +143,7 @@ locals {
         },
         {
           "alert" = "kube-state-metrics - statefulset availability down"
-          "expr"  = "(kube_statefulset_status_replicas_ready / kube_statefulset_spec_replicas) * 100 == 0 and kube_statefulset_spec_replicas > 1"
+          "expr"  = "(kube_statefulset_status_replicas_ready / kube_statefulset_replicas) * 100 == 0 and kube_statefulset_replicas > 1"
           "for"   = "1m"
           "labels" = merge(
             {
@@ -162,7 +162,7 @@ locals {
         },
         {
           "alert" = "kube-state-metrics - statefulset availability down single replica"
-          "expr"  = "(kube_statefulset_status_replicas_ready / kube_statefulset_spec_replicas) * 100 == 0 and kube_statefulset_spec_replicas == 1"
+          "expr"  = "(kube_statefulset_status_replicas_ready / kube_statefulset_replicas) * 100 == 0 and kube_statefulset_spec_replicas == 1"
           "for"   = "15m"
           "labels" = merge(
             {
@@ -181,7 +181,7 @@ locals {
         },
         {
           "alert" = "kube-state-metrics - daemonset availability critical"
-          "expr"  = "(kube_daemonset_status_current_number_ready / kube_daemonset_status_desired_number_scheduled) * 100  < 100"
+          "expr"  = "(kube_daemonset_status_number_ready / kube_daemonset_status_desired_number_scheduled) * 100  < 100"
           "for"   = "5m"
           "labels" = merge(
             {
@@ -370,7 +370,7 @@ locals {
           )
         },
         {
-          "alert" = "kube-state-metrics - persistent volume clain pending phase"
+          "alert" = "kube-state-metrics - persistent volume claim pending phase"
           "expr"  = "kube_persistentvolumeclaim_status_phase{phase=\"Pending\"} > 0"
           "for"   = "15m"
           "labels" = merge(
@@ -389,7 +389,7 @@ locals {
           )
         },
         {
-          "alert" = "kube-state-metrics - persistent volume clain lost phase"
+          "alert" = "kube-state-metrics - persistent volume claim lost phase"
           "expr"  = "kube_persistentvolumeclaim_status_phase{phase=\"Lost\"} > 0"
           "for"   = "5m"
           "labels" = merge(
