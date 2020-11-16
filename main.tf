@@ -821,7 +821,7 @@ resource "kubernetes_cluster_role" "this" {
 
   rule {
     api_groups = ["apps"]
-    resources  = ["daemonsets", "deployments", "statefulsets"]
+    resources  = ["daemonsets", "deployments", "statefulsets", "replicasets"]
     verbs      = ["get", "list", "watch"]
   }
 
@@ -838,6 +838,12 @@ resource "kubernetes_cluster_role" "this" {
   }
 
   rule {
+    api_groups = ["authorization.k8s.io"]
+    resources  = ["subjectaccessreviews"]
+    verbs      = ["create"]
+  }
+
+  rule {
     api_groups = ["policy"]
     resources  = ["poddisruptionbudgets"]
     verbs      = ["list", "watch"]
@@ -846,6 +852,30 @@ resource "kubernetes_cluster_role" "this" {
   rule {
     api_groups = ["certificates.k8s.io"]
     resources  = ["certificatesigningrequests"]
+    verbs      = ["list", "watch"]
+  }
+
+  rule {
+    api_groups = ["networking.k8s.io"]
+    resources  = ["networkpolicies", "ingresses"]
+    verbs      = ["list", "watch"]
+  }
+
+  rule {
+    api_groups = ["coordination.k8s.io"]
+    resources  = ["leases"]
+    verbs      = ["list", "watch"]
+  }
+
+  rule {
+    api_groups = ["storage.k8s.io"]
+    resources  = ["storageclasses", "volumeattachments"]
+    verbs      = ["list", "watch"]
+  }
+
+  rule {
+    api_groups = ["admissionregistration.k8s.io"]
+    resources  = ["mutatingwebhookconfigurations", "validatingwebhookconfigurations"]
     verbs      = ["list", "watch"]
   }
 }
