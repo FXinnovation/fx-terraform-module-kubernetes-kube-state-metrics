@@ -55,11 +55,4 @@ No inputs.
 | <a name="output_default_service_name"></a> [default\_service\_name](#output\_default\_service\_name) | n/a |
 | <a name="output_default_service_port"></a> [default\_service\_port](#output\_default\_service\_port) | n/a |
 | <a name="output_default_service_port_name"></a> [default\_service\_port\_name](#output\_default\_service\_port\_name) | n/a |
-| <a name="output_disabled_cluster_role_binding_name"></a> [disabled\_cluster\_role\_binding\_name](#output\_disabled\_cluster\_role\_binding\_name) | n/a |
-| <a name="output_disabled_cluster_role_name"></a> [disabled\_cluster\_role\_name](#output\_disabled\_cluster\_role\_name) | n/a |
-| <a name="output_disabled_deployment_name"></a> [disabled\_deployment\_name](#output\_disabled\_deployment\_name) | n/a |
-| <a name="output_disabled_service_account_name"></a> [disabled\_service\_account\_name](#output\_disabled\_service\_account\_name) | n/a |
-| <a name="output_disabled_service_name"></a> [disabled\_service\_name](#output\_disabled\_service\_name) | n/a |
-| <a name="output_disabled_service_port"></a> [disabled\_service\_port](#output\_disabled\_service\_port) | n/a |
-| <a name="output_disabled_service_port_name"></a> [disabled\_service\_port\_name](#output\_disabled\_service\_port\_name) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
