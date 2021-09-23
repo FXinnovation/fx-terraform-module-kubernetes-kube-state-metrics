@@ -1,3 +1,13 @@
+1.0.0 / 2021-09-23
+==================
+
+  * (BREAKING) chore: pins `pre-commit-hooks` to `v4.0.1`.
+  * (BREAKING) chore: pins `kubernetes` provider to `2.x+`.
+  * (BREAKING) chore: pins `random` provider to `3.x+`.
+  * fix: breaking changes because of kubernetes `2.x+`.
+  * refactor: get rid of `disabled` example.
+  * feat: add `pre-commit-afcmf` (`v0.1.2`).
+  * chore: pins `pre-commit-terraform` to `v1.50.0`.
 
 0.3.0 / 2020-11-16
 ==================
