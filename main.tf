@@ -15,7 +15,7 @@ locals {
   service_port_name = "http"
   prometheus_alert_groups_rules_labels = merge(
     {
-      "source" = "https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-kubernetes-kube-state-metrics"
+      "source" = "https://github.com/FXinnovation/fx-terraform-module-kubernetes-kube-state-metrics"
     },
     var.prometheus_alert_groups_rules_labels
   )
