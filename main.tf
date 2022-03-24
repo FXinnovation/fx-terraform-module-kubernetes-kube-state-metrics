@@ -646,7 +646,7 @@ resource "kubernetes_deployment" "this" {
       }
       spec {
         automount_service_account_token = true
-        service_account_name            = var.rbac_enabled ? element(concat(kubernetes_service_account.this.*.metadata.0.name, list("")), 0) : var.deployment_service_account_name
+        service_account_name            = var.rbac_enabled ? element(concat(kubernetes_service_account.this.*.metadata.0.name, tolist("")), 0) : var.deployment_service_account_name
         container {
           name              = "kube-state-metrics"
           image             = "${var.image_name}:${var.image_version}"
@@ -906,12 +906,12 @@ resource "kubernetes_cluster_role_binding" "this" {
   role_ref {
     api_group = "rbac.authorization.k8s.io"
     kind      = "ClusterRole"
-    name      = element(concat(kubernetes_cluster_role.this.*.metadata.0.name, list("")), 0)
+    name      = element(concat(kubernetes_cluster_role.this.*.metadata.0.name, tolist("")), 0)
   }
 
   subject {
     kind      = "ServiceAccount"
-    name      = element(concat(kubernetes_service_account.this.*.metadata.0.name, list("")), 0)
+    name      = element(concat(kubernetes_service_account.this.*.metadata.0.name, tolist("")), 0)
     namespace = var.namespace
   }
 }
