@@ -3,7 +3,6 @@
 #####
 
 provider "kubernetes" {
-  version          = "1.10.0"
   load_config_file = true
 }
 
