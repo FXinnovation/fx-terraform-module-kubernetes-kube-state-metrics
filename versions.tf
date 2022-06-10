@@ -3,7 +3,8 @@ terraform {
 
   required_providers {
     kubernetes = {
-      source = "hashicorp/kubernetes"
+      source  = "hashicorp/kubernetes"
+      version = ">= 2"
     }
     random = ">= 2.0.0"
   }

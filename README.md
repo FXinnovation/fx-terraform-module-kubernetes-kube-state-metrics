@@ -8,13 +8,14 @@ Terraform module that will deploy kube-state-metrics on kubernetes.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 2.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | n/a |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 2.0.0 |
 
 ## Modules
