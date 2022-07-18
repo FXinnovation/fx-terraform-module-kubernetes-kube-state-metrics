@@ -590,7 +590,7 @@ locals {
 resource "random_string" "selector" {
   special = false
   upper   = false
-  number  = false
+  numeric = false
   length  = 8
 }
 
